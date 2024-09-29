@@ -23,5 +23,5 @@
 
 (defn -main []
   (config/load-env)
-  (repo/connect-to-db (@config/config :db))
+  (repo/connect-to-db (:url (:db @config/config)))
   (start-server 8090))

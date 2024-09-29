@@ -7,10 +7,11 @@
                  [http-kit "2.8.0"]
                  [compojure "1.7.1"]
                  [metosin/jsonista "0.3.11"]
-                 [com.github.igrishaev/pg2-core "0.1.17"]
                  [ring-logger "1.1.1"]
                  [ring/ring-core "1.12.2"]
-                 [environ "1.2.0"]]
+                 [environ "1.2.0"]
+                 [com.github.seancorfield/next.jdbc "1.3.939"]
+                 [org.postgresql/postgresql "42.6.0"]]
   :plugins [[lein-environ "1.2.0"]]
   :main ^:skip-aot korgi-url.core
   :aot [korgi-url.core])
