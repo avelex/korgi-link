@@ -1,5 +1,6 @@
 (ns korgi-url.handler
   (:require [jsonista.core :as json]
+            [ring.util.response :refer [redirect]]
             [korgi-url.config :as config]
             [korgi-url.http-util :as http-util]
             [korgi-url.config :as config]
@@ -31,4 +32,5 @@
       (http-util/render-ok)))
 
 (defn get-original-url [short-url]
-  (repo/get-url-by-hash short-url))
+  (-> (repo/get-url-by-hash short-url)
+      (redirect)))
