@@ -22,5 +22,6 @@
   (println (str "Start listening server on http://localhost:" port)))
 
 (defn -main []
+  (config/load-env)
   (repo/connect-to-db (config/config :db))
   (start-server 8090))
