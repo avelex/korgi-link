@@ -1,7 +1,8 @@
 (ns korgi-url.handler
   (:require [jsonista.core :as json]
+            [korgi-url.config :as config]
             [korgi-url.http-util :as http-util]
-            [korgi-url.config :refer [config]]
+            [korgi-url.config :as config]
             [korgi-url.repo :as repo])
   (:import (java.security MessageDigest)))
 
@@ -12,7 +13,7 @@
 (defn get-or-create-short-url [url]
   (let [hash (subs (sha256 url) 0 8)]
     (repo/save-url url hash)
-    (str (config :base) hash)))
+    (str (@config/config :base) hash)))
 
 (defn render-json [short-url]
   (json/write-value-as-string {"url" short-url}))

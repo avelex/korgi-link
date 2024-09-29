@@ -11,5 +11,6 @@
                  [ring-logger "1.1.1"]
                  [ring/ring-core "1.12.2"]
                  [environ "1.2.0"]]
+  :plugins [[lein-environ "1.2.0"]]
   :main ^:skip-aot korgi-url.core
   :aot [korgi-url.core])
