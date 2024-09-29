@@ -2,7 +2,7 @@
   (:require [environ.core :refer [env]]))
 
 (def db-host (env :database-host))
-(def db-port (env :database-port))
+(def db-port (Integer/parseInt (env :database-port)))
 (def db-user (env :database-user))
 (def db-password (env :database-password))
 (def db-name (env :database-name))

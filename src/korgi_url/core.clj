@@ -5,7 +5,8 @@
             [compojure.route :as route]
             [ring.logger :as logger]
             [korgi-url.handler :as handler]
-            [korgi-url.repo :as repo]))
+            [korgi-url.repo :as repo]
+            [korgi-url.config :as config]))
 
 (defroutes app-routes
            (GET "/:short" [short] (handler/get-original-url short))
@@ -21,5 +22,5 @@
   (println (str "Start listening server on http://localhost:" port)))
 
 (defn -main []
-  (repo/connect-to-db)
+  (repo/connect-to-db (config/config :db))
   (start-server 8090))
