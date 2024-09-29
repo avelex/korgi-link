@@ -9,5 +9,7 @@
                  [metosin/jsonista "0.3.11"]
                  [com.github.igrishaev/pg2-core "0.1.17"]
                  [ring-logger "1.1.1"]
-                 [ring/ring-core "1.12.2"]]
-  :main korgi-url.core)
+                 [ring/ring-core "1.12.2"]
+                 [environ "1.2.0"]]
+  :main ^:skip-aot korgi-url.core
+  :aot [korgi-url.core])

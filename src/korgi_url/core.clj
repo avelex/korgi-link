@@ -1,9 +1,11 @@
 (ns korgi-url.core
+  (:gen-class)
   (:require [org.httpkit.server :as http]
             [compojure.core :refer :all]
             [compojure.route :as route]
             [ring.logger :as logger]
-            [korgi-url.handler :as handler]))
+            [korgi-url.handler :as handler]
+            [korgi-url.repo :as repo]))
 
 (defroutes app-routes
            (GET "/:short" [short] (handler/get-original-url short))
@@ -19,4 +21,5 @@
   (println (str "Start listening server on http://localhost:" port)))
 
 (defn -main []
+  (repo/connect-to-db)
   (start-server 8090))
