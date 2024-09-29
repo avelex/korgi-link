@@ -10,4 +10,5 @@
           :port (Integer/parseInt (env :database-port))
           :user (env :database-user)
           :password (env :database-password)
-          :database (env :database-name)}}))
+          :database (env :database-name)
+          :use-ssl? (Boolean/parseBoolean (env :database-ssl))}}))
