@@ -1,5 +1,6 @@
 (ns korgi-url.repo
-  (:require [next.jdbc :as jdbc]))
+  (:require [next.jdbc :as jdbc]
+            [next.jdbc.plan :as plan]))
 
 (def db-pool (atom nil))
 
@@ -13,7 +14,4 @@
                    RETURNING hash" url hash]))
 
 (defn get-url-by-hash [hash]
-  (let [result (jdbc/execute! @db-pool
-                               ["SELECT original_url FROM url WHERE hash = ?" hash])]
-    (when (seq result)
-      (:original_url (first result)))))
+  (plan/select-one! @db-pool :original_url ["SELECT original_url FROM url WHERE hash = ?" hash]))
